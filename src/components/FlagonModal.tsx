@@ -3,10 +3,13 @@ import React, { FC, useState } from 'react';
 import { useFlagon } from '../hooks/useFlagon';
 import { useKeyPress } from '../hooks/useKeyPress';
 import { defaultOptions, FlagonOptions } from '../options';
-import styles from './FlagonModal.css';
+import s from './FlagonModal.css';
 import { FlagonSettings } from './FlagonSettings';
 
 const MODAL_OPEN_KEY = '_isModalOpen';
+
+const getStyles = (key: string, ownStyles: boolean) =>
+  ownStyles ? s[key] : `flagon-modal-${key}`;
 
 interface Props {
   isDev: boolean;
@@ -26,6 +29,7 @@ export const FlagonModal: FC<Props> = ({
   activationKey,
 }: Props) => {
   const opts = { ...defaultOptions, ...options };
+  const styles = (stylesKey: string) => getStyles(stylesKey, opts.hasStyles);
   const key = activationKey || opts.activationKey;
   const { getValue, setValue } = useFlagon();
   const showPersisted = getValue(MODAL_OPEN_KEY);
@@ -39,15 +43,15 @@ export const FlagonModal: FC<Props> = ({
   // Bail early if not in development
   if (!isDev || !show) return null;
   return (
-    <div className={styles.dialog}>
-      <div className={styles.wrapper}>
-        <h4>{opts.modalTitle}</h4>
-        <hr />
-        <div>
+    <div className={styles('dialog')}>
+      <div className={styles('wrapper')}>
+        <h4 className={styles('title')}>{opts.modalTitle}</h4>
+        <hr className={styles('hr')} />
+        <div className={styles('settings')}>
           <FlagonSettings isDev={isDev} options={opts} />
         </div>
         <button
-          className={styles.closeButton}
+          className={styles('closeButton')}
           onClick={handleClose}
           type="button"
         >

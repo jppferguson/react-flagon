@@ -1,2 +1,2 @@
-export * from './Flagon';
 export * from './FlagonModal';
+export * from './FlagonSettings';
