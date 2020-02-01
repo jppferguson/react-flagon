@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const pkg = require('./package.json');
 
 const libraryName = pkg.name;
@@ -37,7 +38,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader',
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              modules: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -48,6 +56,14 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
   resolve: {
     alias: {
       react: path.resolve(__dirname, './node_modules/react'),

@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "jsx": "react",
+    "module": "es6",
+    "moduleResolution": "node",
     "outDir": "./lib/",
     "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
-    "module": "es6",
-    "jsx": "react",
-    "target": "es5",
-    "allowJs": true,
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types",
       "src/types"
