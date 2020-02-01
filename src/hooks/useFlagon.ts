@@ -1,8 +1,8 @@
 import createPersistedState from 'use-persisted-state';
 
-import { options } from '../options';
+import { defaultOptions } from '../options';
 
-const useFlagonState = createPersistedState(options.localStorageKey);
+const useFlagonState = createPersistedState(defaultOptions.localStorageKey);
 
 const defaultFlagon: FlagonValues = {};
 

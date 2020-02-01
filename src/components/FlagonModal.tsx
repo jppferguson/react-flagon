@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 
 import { useFlagon } from '../hooks/useFlagon';
 import { useKeyPress } from '../hooks/useKeyPress';
-import { options } from '../options';
+import { defaultOptions, FlagonOptions } from '../options';
 import styles from './FlagonModal.css';
 import { FlagonSettings } from './FlagonSettings';
 
@@ -10,7 +10,8 @@ const MODAL_OPEN_KEY = '_isModalOpen';
 
 interface Props {
   isDev: boolean;
-  key?: string;
+  options?: FlagonOptions;
+  activationKey?: string;
 }
 const persistModalState = ({ setShowLocal, setShowPersisted }) => (
   show: boolean,
@@ -21,8 +22,11 @@ const persistModalState = ({ setShowLocal, setShowPersisted }) => (
 
 export const FlagonModal: FC<Props> = ({
   isDev,
-  key = options.activationKey,
+  options = { ...defaultOptions },
+  activationKey,
 }: Props) => {
+  const opts = { ...defaultOptions, ...options };
+  const key = activationKey || opts.activationKey;
   const { getValue, setValue } = useFlagon();
   const showPersisted = getValue(MODAL_OPEN_KEY);
   const setShowPersisted = setValue(MODAL_OPEN_KEY);
@@ -30,18 +34,23 @@ export const FlagonModal: FC<Props> = ({
   const setShow = persistModalState({ setShowLocal, setShowPersisted });
   const handleClose = (): void => setShow(false);
   const handleToggle = (): void => setShow(!show);
-  useKeyPress(key, handleToggle);
 
+  useKeyPress(key, handleToggle);
   // Bail early if not in development
   if (!isDev || !show) return null;
   return (
     <div className={styles.dialog}>
       <div className={styles.wrapper}>
-        <h4>{options.modalTitle}</h4>
+        <h4>{opts.modalTitle}</h4>
+        <hr />
         <div>
-          <FlagonSettings isDev={isDev} />
+          <FlagonSettings isDev={isDev} options={opts} />
         </div>
-        <button onClick={handleClose} type="button">
+        <button
+          className={styles.closeButton}
+          onClick={handleClose}
+          type="button"
+        >
           Close
         </button>
       </div>

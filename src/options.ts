@@ -12,7 +12,7 @@ export interface FlagonSetting {
   initialValue: boolean;
 }
 
-const defaultOptions: FlagonOptions = {
+export const defaultOptions: FlagonOptions = {
   activationKey: '`',
   localStorageKey: 'flagon',
   hasStyles: true,
@@ -31,8 +31,8 @@ const defaultOptions: FlagonOptions = {
   ],
 };
 
-export const options: FlagonOptions = {
-  ...defaultOptions,
-};
+// export const options: FlagonOptions = {
+//   ...defaultOptions,
+// };
 
-export default options;
+export default defaultOptions;

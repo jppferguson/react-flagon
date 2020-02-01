@@ -1,20 +1,25 @@
 import React, { FC } from 'react';
 
 import { useFlagon } from '../hooks/useFlagon';
-import { options } from '../options';
+import { defaultOptions, FlagonOptions } from '../options';
 import { FlagonSetting } from './FlagonSetting';
 
 interface Props {
   isDev: boolean;
+  options?: FlagonOptions;
 }
 
-export const FlagonSettings: FC<Props> = ({ isDev }: Props) => {
+export const FlagonSettings: FC<Props> = ({
+  isDev,
+  options = { ...defaultOptions },
+}: Props) => {
+  const opts = { ...defaultOptions, ...options };
   const { getValue, setValue } = useFlagon();
   // Bail early if not in development
   if (!isDev) return null;
   return (
     <>
-      {options.settings.map(setting => (
+      {opts.settings.map(setting => (
         <FlagonSetting
           key={setting.key}
           id={setting.key}
