@@ -21,7 +21,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.js|jsx?$/,
         type: 'javascript/auto',
         exclude: /(node_modules|bower_components|build)/,
         use: {
@@ -30,7 +30,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: 'style-loader'
+      }, {
+        test: /\.css$/,
+        loader: 'css-loader',
+        options: {
+          modules: true
+        }
       }
     ]
   },
@@ -38,7 +44,8 @@ module.exports = {
     alias: {
       'react': path.resolve(__dirname, './node_modules/react'),
       'react-dom': path.resolve(__dirname, './node_modules/react-dom')
-    }
+    },
+    extensions: ['.js', '.jsx']
   },
   externals: {
     // Don't bundle react or react-dom
