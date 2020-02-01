@@ -6,4 +6,4 @@ export const FlagonModal = () => {
   return <div className={styles.wrapper}>FlagonModal</div>
 }
 
-export default Flagon
+export default FlagonModal
