@@ -15,5 +15,42 @@
   background-color: aliceblue;
   border-radius: 0.5em;
   box-shadow: 0 0 1em 1em rgba(0, 0, 0, 0.2);
-  padding: 30px;
+  padding: 20px;
+  position: relative;
+  min-width: 300px;
+}
+
+.closeButton {
+  background: none;
+  border-radius: 0.5em;
+  border: 0;
+  height: 32px;
+  opacity: 0.3;
+  overflow: hidden;
+  position: absolute;
+  right: 10px;
+  text-align: left;
+  text-indent: -5000px;
+  top: 10px;
+  transition: opacity ease-in-out 200ms;
+  width: 32px;
+}
+.closeButton:hover {
+  opacity: 1;
+}
+.closeButton::before,
+.closeButton::after {
+  background-color: #333;
+  content: ' ';
+  height: 33px;
+  position: absolute;
+  right: 15px;
+  top: 0;
+  width: 2px;
+}
+.closeButton::before {
+  transform: rotate(45deg);
+}
+.closeButton::after {
+  transform: rotate(-45deg);
 }
