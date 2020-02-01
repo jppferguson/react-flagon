@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 import styles from './Flagon.css';
 
-export const Flagon = () => {
-  return <div className={styles.wrapper}>Flagon</div>
-}
+export const Flagon = () => <div className={styles.wrapper}>Flagon</div>;
 
-export default Flagon
+export default Flagon;
