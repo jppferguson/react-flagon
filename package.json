@@ -1,0 +1,45 @@
+{
+  "name": "react-flagon",
+  "version": "0.0.1",
+  "description": "A vessel for your React flags",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --watch",
+    "prepare": "npm run build && npm version patch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jppferguson/react-flagon.git"
+  },
+  "keywords": [
+    "flagon",
+    "react"
+  ],
+  "contributors": [
+    "Jamie Ferguson"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "bugs": {
+    "url": "https://github.com/jppferguson/react-flagon/issues"
+  },
+  "homepage": "https://github.com/jppferguson/react-flagon#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}

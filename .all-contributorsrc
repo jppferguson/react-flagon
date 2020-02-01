@@ -1,0 +1,25 @@
+{
+  "files": [
+    "readme.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "jppferguson",
+      "name": "Jamie Ferguson",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1508581?v=4",
+      "profile": "https://jppferguson.com",
+      "contributions": [
+        "code",
+        "ideas",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "react-flagon",
+  "projectOwner": "jppferguson",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
