@@ -6,10 +6,14 @@ export interface FlagonOptions {
   settings: FlagonSetting[];
 }
 
+export type FlagonSettingTypes = 'text' | 'checkbox';
+export type FlagonSettingValues = boolean | string;
+
 export interface FlagonSetting {
   key: string;
   label: string;
-  initialValue: boolean;
+  type?: FlagonSettingTypes;
+  initialValue: FlagonSettingValues;
 }
 
 export const defaultOptions: FlagonOptions = {
@@ -22,11 +26,7 @@ export const defaultOptions: FlagonOptions = {
       key: 'isDebug',
       label: 'Debug enabled',
       initialValue: false,
-    },
-    {
-      key: 'isDark',
-      label: 'Dark mode',
-      initialValue: false,
+      type: 'checkbox',
     },
   ],
 };

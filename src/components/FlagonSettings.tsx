@@ -26,6 +26,7 @@ export const FlagonSettings: FC<Props> = ({
           isDev={isDev}
           label={setting.label}
           setValue={setValue(setting.key)}
+          type={setting.type}
           value={getValue(setting.key)}
         />
       ))}
