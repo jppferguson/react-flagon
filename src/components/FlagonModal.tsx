@@ -6,7 +6,7 @@ import { options } from '../options';
 import styles from './FlagonModal.css';
 import { FlagonSettings } from './FlagonSettings';
 
-const MODAL_STATE = '_isModalOpen';
+const MODAL_OPEN_KEY = '_isModalOpen';
 
 interface Props {
   isDev: boolean;
@@ -24,8 +24,8 @@ export const FlagonModal: FC<Props> = ({
   key = options.activationKey,
 }: Props) => {
   const { getValue, setValue } = useFlagon();
-  const showPersisted = getValue(MODAL_STATE);
-  const setShowPersisted = setValue(MODAL_STATE);
+  const showPersisted = getValue(MODAL_OPEN_KEY);
+  const setShowPersisted = setValue(MODAL_OPEN_KEY);
   const [show, setShowLocal] = useState(showPersisted);
   const setShow = persistModalState({ setShowLocal, setShowPersisted });
   const handleClose = (): void => setShow(false);
