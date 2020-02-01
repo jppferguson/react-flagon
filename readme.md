@@ -13,3 +13,5 @@ If you `yarn link` / `npm link` this into a local project, you may run into a "*
 **The workaround for this is:**
 
 Assuming `my-app` and `react-flagon` are sibling folders, run `yarn link ../my-app/node_modules/react` (or `npm link ...`) from `react-flagon`. This should make the `react-flagon` use the application’s own React copy.
+
+*For more info see [this React Issue](https://github.com/facebook/react/issues/15050).*
