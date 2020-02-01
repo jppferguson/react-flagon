@@ -1,5 +1,6 @@
 export interface FlagonOptions {
   activationKey: string;
+  localStorageKey: string;
   hasStyles: boolean;
   modalTitle: string;
   settings: FlagonSetting[];
@@ -13,6 +14,7 @@ export interface FlagonSetting {
 
 const defaultOptions: FlagonOptions = {
   activationKey: '`',
+  localStorageKey: 'flagon',
   hasStyles: true,
   modalTitle: 'Flagon',
   settings: [

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import useFlagon from '../hooks/useFlagon';
+import { useFlagon } from '../hooks/useFlagon';
 import { options } from '../options';
 import { FlagonSetting } from './FlagonSetting';
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const FlagonSettings: FC<Props> = ({ isDev }: Props) => {
-  const { isDebug, setIsDebug } = useFlagon();
+  const { getValue, setValue } = useFlagon();
   // Bail early if not in development
   if (!isDev) return null;
   return (
@@ -20,8 +20,8 @@ export const FlagonSettings: FC<Props> = ({ isDev }: Props) => {
           id={setting.key}
           isDev={isDev}
           label={setting.label}
-          setValue={setIsDebug}
-          value={isDebug}
+          setValue={setValue(setting.key)}
+          value={getValue(setting.key)}
         />
       ))}
     </>
