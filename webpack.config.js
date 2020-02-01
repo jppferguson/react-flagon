@@ -8,7 +8,7 @@ module.exports = {
   optimization: {
     minimize: false
   },
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: path.resolve('./lib'),
     filename: 'index.js',
