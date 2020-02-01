@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import styles from './FlagonModal.css';
 
-export const FlagonModal = () => (
+export const FlagonModal: FC = () => (
   <div className={styles.wrapper}>FlagonModal</div>
 );
 
