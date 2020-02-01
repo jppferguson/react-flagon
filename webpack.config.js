@@ -21,12 +21,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js|jsx?$/,
+        test: /\.(t|j)sx?$/,
         type: 'javascript/auto',
         exclude: /(node_modules|bower_components|build)/,
         use: {
-          loader: 'babel-loader'
+          loader: 'ts-loader'
         }
+      },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "source-map-loader"
       },
       {
         test: /\.css$/,
@@ -45,8 +51,9 @@ module.exports = {
       'react': path.resolve(__dirname, './node_modules/react'),
       'react-dom': path.resolve(__dirname, './node_modules/react-dom')
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
+  devtool: "source-map",
   externals: {
     // Don't bundle react or react-dom
     react: {
