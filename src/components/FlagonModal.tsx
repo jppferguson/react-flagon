@@ -12,7 +12,7 @@ const getStyles = (key: string, ownStyles: boolean) =>
   ownStyles ? s[key] : `flagon-modal-${key}`;
 
 interface Props {
-  isDev: boolean;
+  isDev?: boolean;
   options?: FlagonOptions;
   activationKey?: string;
 }
@@ -24,7 +24,7 @@ const persistModalState = ({ setShowLocal, setShowPersisted }) => (
 };
 
 export const FlagonModal: FC<Props> = ({
-  isDev,
+  isDev = false,
   options = { ...defaultOptions },
   activationKey,
 }: Props) => {
