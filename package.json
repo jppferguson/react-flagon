@@ -1,6 +1,6 @@
 {
   "name": "react-flagon",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A vessel for your React flags",
   "scripts": {
     "build": "webpack",
