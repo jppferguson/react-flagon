@@ -2,7 +2,8 @@ import React, { FC, useState } from 'react';
 
 import { useFlagon } from '../hooks/useFlagon';
 import { useKeyPress } from '../hooks/useKeyPress';
-import { defaultOptions, FlagonOptions } from '../options';
+import { defaultOptions } from '../options';
+import { FlagonOptions } from '../types';
 import s from './FlagonModal.css';
 import { FlagonSettings } from './FlagonSettings';
 

@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 
-import { FlagonSettingTypes, FlagonSettingValues } from '../options';
+import { FlagonSettingInputTypes, FlagonValueTypes } from '../types';
 
 interface Props {
   id: string;
   isDev: boolean;
   key?: string;
   label: string;
-  type?: FlagonSettingTypes;
-  setValue: (value: FlagonSettingValues) => void;
-  value: FlagonSettingValues;
+  type?: FlagonSettingInputTypes;
+  setValue: (value: FlagonValueTypes) => void;
+  value: FlagonValueTypes;
 }
 
 export const FlagonSetting: FC<Props> = ({
