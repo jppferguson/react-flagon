@@ -1,32 +1,29 @@
 import createPersistedState from 'use-persisted-state';
 
 import { defaultOptions } from '../options';
+import { FlagonValueKey, FlagonValueRecords, FlagonValueTypes } from '../types';
 
 const useFlagonState = createPersistedState(defaultOptions.localStorageKey);
 
-const defaultFlagon: FlagonValues = {};
+const defaultFlagon: FlagonValueRecords = {};
 
-type FlagonKey = string;
-type FlagonValue = boolean;
-type FlagonValues = Record<FlagonKey, FlagonValue>;
-type UseFlagonSetValue = (key: FlagonKey) => (value: FlagonValue) => void;
-type UseFlagonGetValue = (key: FlagonKey) => FlagonValue;
+type UseFlagonSetValue<T> = (key: FlagonValueKey) => (value: T) => void;
+type UseFlagonGetValue<T> = (key: FlagonValueKey) => T;
 
 type UseFlagonReturnValues = {
-  setValue: UseFlagonSetValue;
-  getValue: UseFlagonGetValue;
+  setValue: UseFlagonSetValue<FlagonValueTypes>;
+  getValue: UseFlagonGetValue<FlagonValueTypes>;
 };
 
 export const useFlagon = (
-  initialFlagon: FlagonValues = defaultFlagon,
+  initialFlagon: FlagonValueRecords = defaultFlagon,
 ): UseFlagonReturnValues => {
   const [flagonValues, setFlagonValues] = useFlagonState(initialFlagon);
+  const getValue = key => flagonValues[key];
+  const setValue = key => value =>
+    setFlagonValues({ ...flagonValues, [key]: value });
 
-  return {
-    setValue: key => value =>
-      setFlagonValues({ ...flagonValues, [key]: value }),
-    getValue: key => flagonValues[key],
-  };
+  return { setValue, getValue };
 };
 
 export default useFlagon;

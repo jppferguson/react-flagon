@@ -15,9 +15,11 @@ import 'react-flagon/lib/main.css';
 import { FlagonModal } from 'react-flagon';
 const isDev = process.env.NODE_ENV === 'development';
 
-. . .
-<FlagonModal isDev={isDev} />
-. . .
+const MyApp = () => (
+  . . .
+  <FlagonModal isDev={isDev} />
+  . . .
+)
 ```
 
 *Note: Pass in the `isDev` flag to ensure the component is only rendered in development environments.*
@@ -27,12 +29,19 @@ You can access the modal by pressing the backtick key ```(`)```. This is configu
 Then use the `useFlagon` hook to retrieve a value:
 
 ```jsx
-import { useFlagon } from 'react-flagon';
+import { useFlagonKey } from 'react-flagon'
 
-. . .
-const { getValue } = useFlagon();
-{getValue('isDebug') && <>Only shown when debug flag is checked</>}
-. . .
+const MyComponent = () => {
+  const { getValue } = useFlagon()
+  const [value, setValue] = useFlagonKey('isDebug', true)
+  return(
+    <div>
+      <label><input type="checkbox" checked={value} onChanged={() => setValue(!value)} /> Debug Mode Active</label>
+      <hr />
+      {value && <p>This is only shown when the <code>isDebug</code> flag is checked. The value is also persisted in local storage.</p>}
+    </div>
+  )
+}
 ```
 
 ## Options
