@@ -8,10 +8,10 @@ const useFlagonState = createPersistedState(defaultOptions.localStorageKey);
 type UseFlagonKeySetValue<T> = (key: FlagonValueKey) => (value: T) => void;
 type UseFlagonKeyReturnValues<T> = [T, UseFlagonKeySetValue<T>];
 
-export const useFlagonKey = (
+export const useFlagonKey = <T extends FlagonValueTypes>(
   key: string,
-  initialValue?: FlagonValueTypes,
-): UseFlagonKeyReturnValues<FlagonValueTypes> => {
+  initialValue?: T,
+): UseFlagonKeyReturnValues<T> => {
   const [flagonValues, setFlagonValues] = useFlagonState(initialValue);
   const value = flagonValues[key] || initialValue;
   const setValue = newValue =>
