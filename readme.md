@@ -2,15 +2,16 @@
 
 A vessel for your React flags.
 
-### Install
+## Install
 
-`yarn install react-flagon` or `npm install --save react-flagon`
+`yarn add react-flagon` or `npm install --save react-flagon`
 
 ## Usage
 
-Add the Modal to be able to switch options on and off:
+Add the `FlagonModal` somewhere in your `App.js` file to be able to switch options on and off. And optionally the css file:
 
 ```jsx
+import 'react-flagon/lib/main.css';
 import { FlagonModal } from 'react-flagon';
 const isDev = process.env.NODE_ENV === 'development';
 

@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 
 import { useFlagon } from '../hooks/useFlagon';
-import { defaultOptions, FlagonOptions } from '../options';
+import { defaultOptions } from '../options';
+import { FlagonOptions } from '../types';
 import { FlagonSetting } from './FlagonSetting';
 
 interface Props {
